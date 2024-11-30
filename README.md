@@ -36,7 +36,7 @@ Active Directory is a cornerstone of enterprise IT infrastructure, offering cent
    - Create a VM running **Windows Server 2022** named **DC-1**.
      - Username: `labuser`
      - Password: `Cyberlab123!`
-   - Assign a static private IP address to DC-1's NIC.
+   - Assign a static private IP address to DC-1's NIC. (DC-1 -> Network Settings -> Virtual NiC -> defaultipconfig -> Private IP static)
 
 4. **Prepare DC-1**:
    - Log into the VM and disable the Windows Firewall temporarily (testing purposes only).
@@ -56,9 +56,18 @@ Active Directory is a cornerstone of enterprise IT infrastructure, offering cent
    - Log into **Client-1**, open PowerShell, and verify connectivity to DC-1 using `ping <DC-1 private IP>`.
    - Run `ipconfig /all` to confirm the DNS settings reflect DC-1's private IP address.
 
+![image](https://github.com/user-attachments/assets/6ffe26fc-6e4c-4525-abfd-97f93ecd670a)
+(Resource Group housing our Virtual Network, Virtual Machines [Domain Controller & Client])
+
+![image](https://github.com/user-attachments/assets/c40604e8-7c3e-4eaa-ba13-22c402ec8c9a)
+
+(client1 DNS set to DC-1's private IP)
+
 ---
 
 ## Deploying and Configuring Active Directory
+
+![image](https://github.com/user-attachments/assets/a52b9503-0019-47e3-bb04-0513ee05a9b4)
 
 ### Installing Active Directory and Setting Up the Domain
 1. **Install Active Directory Domain Services**:
@@ -93,6 +102,14 @@ Active Directory is a cornerstone of enterprise IT infrastructure, offering cent
 3. **Verify in ADUC**:
    - Log into **DC-1** and confirm **Client-1** appears in **ADUC**.
    - Move **Client-1** to a new OU named `_CLIENTS`.
+
+![image](https://github.com/user-attachments/assets/40af679d-fb4b-4dc4-9369-2980c33ab7a6)
+
+(Client-1 PC recognized in mydomain.com, Jane Doe member of Domain Admins SecGrp)
+
+![image](https://github.com/user-attachments/assets/492c97db-da3a-4af1-8acd-74a8300ee861)
+
+(Client-1 member of mydomain.com)
 
 ---
 
